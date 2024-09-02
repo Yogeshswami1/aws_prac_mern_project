@@ -42,7 +42,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'http://yogesh-frontend.saumic.com', // Replace with your frontend URL
+  origin: 'https://yogesh-frontend.saumic.com', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
