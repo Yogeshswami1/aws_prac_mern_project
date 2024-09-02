@@ -33,20 +33,23 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
-// import authRoutes from './routes/authRoutes.js';
-import authRoutes from "./Routes/authRoutes.js"
-import './config/passportConfig.js'; // Load passport configuration
-// import contactRoutes from './routes/contactRoutes.js';
-import contactRoutes from "./Routes/contactRoutes.js"
+import authRoutes from "./Routes/authRoutes.js";
+import contactRoutes from "./Routes/contactRoutes.js";
+import './config/passportConfig.js';
+
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+
 app.use(cors({
   origin: 'http://yogesh-frontend.saumic.com', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }));
+
+app.options('*', cors()); // Handle preflight requests
+
+app.use(express.json());
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
